@@ -61,12 +61,18 @@ class FreqaiDataKitchen:
     Juha Nykänen @suikula, Wagner Costa @wagnercosta, Johan Vlugt @Jooopieeert
     """
 
+
     def __init__(
         self,
-        config: Config,
+        config: Dict[str, Any],
         live: bool = False,
         pair: str = "",
+        strategy: "IStrategy",
+        data: Dict[str, Any]
     ):
+        self.data = {}
+        self.config = config
+        self.strategy = strategy
         self.data: Dict[str, Any] = {}
         self.data_dictionary: Dict[str, DataFrame] = {}
         self.config = config
@@ -100,6 +106,7 @@ class FreqaiDataKitchen:
                     config["freqai"]["backtest_period_days"],
                 )
 
+        self.data["labels_mean"] = self.get_labels_mean()
         self.data['extra_returns_per_train'] = self.freqai_config.get('extra_returns_per_train', {})
         if not self.freqai_config.get("data_kitchen_thread_count", 0):
             self.thread_count = max(int(psutil.cpu_count() * 2 - 2), 1)
@@ -109,6 +116,14 @@ class FreqaiDataKitchen:
         self.unique_classes: Dict[str, list] = {}
         self.unique_class_list: list = []
         self.backtest_live_models_data: Dict[str, Any] = {}
+
+        def get_labels_mean(self):
+            return {
+                '&s-up_or_down': 0.5,
+                '&s-relative_change': 0.001,
+                '&s-price_high_low_ratio': 1.0,
+                # outras chaves e valores
+            }
 
     def set_paths(
         self,
