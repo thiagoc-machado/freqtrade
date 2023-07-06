@@ -10,6 +10,7 @@ from typing import Dict, List, Optional, Tuple, Union
 import arrow
 from pandas import DataFrame
 
+
 from freqtrade.constants import CUSTOM_TAG_MAX_LENGTH, Config, IntOrInf, ListPairsWithTimeframes
 from freqtrade.data.dataprovider import DataProvider
 from freqtrade.enums import (CandleType, ExitCheckTuple, ExitType, MarketDirection, RunMode,
