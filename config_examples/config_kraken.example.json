@@ -3,7 +3,7 @@
     "stake_currency": "EUR",
     "stake_amount": 10,
     "tradable_balance_ratio": 0.99,
-    "fiat_display_currency": "EUR",
+    "fiat_display_currency": "BTC",
     "timeframe": "5m",
     "dry_run": true,
     "cancel_open_orders_on_exit": false,
