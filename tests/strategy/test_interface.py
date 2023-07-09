@@ -1,4 +1,3 @@
-# pragma pylint: disable=missing-docstring, C0103
 import logging
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
